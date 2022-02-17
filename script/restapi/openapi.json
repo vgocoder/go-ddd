@@ -1,0 +1,494 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "KS-HORIZON",
+    "description": "",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "用户"
+    },
+    {
+      "name": "设备"
+    }
+  ],
+  "paths": {
+    "/dids/count": {
+      "get": {
+        "summary": "用户设备信息统计",
+        "x-apifox-folder": "设备",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "设备"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "$ref": "#/components/schemas/pagination"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "result"
+                  ]
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/region/{xj_id}": {
+      "put": {
+        "summary": "更新用户地区",
+        "x-apifox-folder": "用户",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "用户"
+        ],
+        "parameters": [
+          {
+            "name": "xj_id",
+            "in": "path",
+            "description": "",
+            "required": true,
+            "example": "31801",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/count": {
+      "get": {
+        "summary": "用户统计",
+        "x-apifox-folder": "用户",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "用户"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "result"
+                  ]
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/dids": {
+      "get": {
+        "summary": "用户设备信息列表",
+        "x-apifox-folder": "设备",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "设备"
+        ],
+        "parameters": [
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "1",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "example": "10",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/did"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "result"
+                  ]
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users": {
+      "get": {
+        "summary": "用户列表",
+        "x-apifox-folder": "用户",
+        "x-apifox-status": "developing",
+        "deprecated": false,
+        "description": "",
+        "tags": [
+          "用户"
+        ],
+        "parameters": [],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "limit": {
+                    "type": "integer"
+                  },
+                  "page": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "limit",
+                  "page"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "code": {
+                      "type": "number"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "result": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/user"
+                      }
+                    }
+                  },
+                  "required": [
+                    "code",
+                    "message",
+                    "result"
+                  ]
+                },
+                "examples": {}
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "region": {
+        "type": "object",
+        "properties": {
+          "xj_id": {
+            "type": "integer",
+            "title": "用户ID"
+          },
+          "city_id": {
+            "type": "integer",
+            "title": "城市ID"
+          },
+          "country_id": {
+            "type": "integer",
+            "title": "国家ID"
+          },
+          "country": {
+            "type": "string",
+            "title": "国家"
+          },
+          "region": {
+            "type": "string",
+            "title": "地区"
+          },
+          "province": {
+            "type": "string",
+            "title": "省份"
+          },
+          "city": {
+            "type": "string",
+            "title": "城市"
+          },
+          "isp": {
+            "type": "string",
+            "title": "运营商"
+          },
+          "decode_body": {
+            "type": "string",
+            "title": "解析数据体"
+          }
+        },
+        "required": [
+          "xj_id"
+        ],
+        "title": "用户地区",
+        "x-apifox-folder": "数据模型"
+      },
+      "user": {
+        "type": "object",
+        "properties": {
+          "xj_id": {
+            "type": "integer"
+          },
+          "phone": {
+            "type": "string"
+          },
+          "nickname": {
+            "type": "string"
+          },
+          "gender": {
+            "type": "string"
+          },
+          "age": {
+            "type": "integer",
+            "nullable": true
+          },
+          "birthday": {
+            "type": "string"
+          },
+          "height": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "reg_type": {
+            "type": "string"
+          },
+          "reg_ip": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "xj_id"
+        ],
+        "x-apifox-folder": "数据模型"
+      },
+      "record": {
+        "type": "object",
+        "properties": {
+          "xj_id": {
+            "type": "integer"
+          },
+          "did": {
+            "type": "string"
+          },
+          "uid": {
+            "type": "integer"
+          },
+          "distance": {
+            "type": "integer"
+          },
+          "time": {
+            "type": "integer"
+          },
+          "consume": {
+            "type": "integer"
+          },
+          "steps": {
+            "type": "integer"
+          },
+          "run_id": {
+            "type": "integer"
+          },
+          "start_time": {
+            "type": "string"
+          },
+          "end_time": {
+            "type": "string"
+          },
+          "add_time": {
+            "type": "string"
+          },
+          "last_point_id": {
+            "type": "integer"
+          },
+          "owner": {
+            "type": "integer"
+          },
+          "mode": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "string"
+          },
+          "mac": {
+            "type": "string"
+          },
+          "heart": {
+            "type": "integer"
+          },
+          "heart_times": {
+            "type": "integer"
+          },
+          "slope_max": {
+            "type": "integer"
+          },
+          "power": {
+            "type": "integer"
+          },
+          "resistance": {
+            "type": "integer"
+          },
+          "course_name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "xj_id",
+          "steps",
+          "distance",
+          "run_id",
+          "start_time",
+          "end_time",
+          "add_time",
+          "time",
+          "consume"
+        ],
+        "x-apifox-folder": "数据模型"
+      },
+      "pagination": {
+        "type": "object",
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "page_size": {
+            "type": "integer"
+          },
+          "page_num": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total",
+          "page_size",
+          "page_num"
+        ],
+        "x-apifox-folder": "辅助"
+      },
+      "did": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "did": {
+            "type": "string"
+          },
+          "xj_id": {
+            "type": "integer"
+          },
+          "model": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "did",
+          "xj_id",
+          "model",
+          "name"
+        ],
+        "x-apifox-folder": "数据模型"
+      }
+    }
+  }
+}

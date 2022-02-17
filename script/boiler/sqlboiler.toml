@@ -1,0 +1,16 @@
+wipe = true # 先删除之前自动生成的文件再重新生成
+no-tests = true # 不生成测试代码
+add-global-variants = true # 生成使用全局数据源的方法，也就是带 G 后缀的方法
+add-panic-variants = true # 生成使用当 error 不为 nil 时 panic 的方法，也就是带 P 后缀的方法
+no-context = true # 不需要上下文参数
+no-hooks = false #禁用hook特性
+
+[mysql]
+dbname = "ks_horizon"
+host = "127.0.0.1"
+pass = "123456"
+sslmode = "false"
+user = "root"
+
+whitelist = ["xj_user","xj_user_did","xj_user_region"]
+blacklist = ["oauth_scopes", "xj_box_activity_country", "xj_coin", "xj_course_bicycle_feedback", "xj_course_dumbbell_feedback", "xj_k12_point", "xj_notice_read", "xj_plan_level", "xj_plan_level_user", "xj_plan_question", "xj_ranking_day", "xj_ranking_distance", "xj_ranking_step", "xj_record_point_blue", "xj_record_point_blue_bicycle", "xj_system_config", "xj_train", "xj_user_guide"]
